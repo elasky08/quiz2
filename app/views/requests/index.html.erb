@@ -1,0 +1,33 @@
+<div class="container">
+<h1>Support Requests</h1>
+<hr>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Department</th>
+      <th>Message</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @requests.each do |request| %>
+    <tr>
+      <td><%= request.name %></td>
+      <td><%= request.email %></td>
+      <td><%= request.department %></td>
+      <td><%= request.message %></td>
+      <td>
+        <%= link_to "Edit", edit_request_path(request) %> |
+        <%= link_to "Delete", request_path(request), method: :delete, data: {confirm: "are you sure?"}%>
+      </td>
+
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="digg_pagination">
+<%= paginate @requests %>
+</div>
+</div>
